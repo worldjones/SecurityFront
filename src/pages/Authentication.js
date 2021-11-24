@@ -9,6 +9,8 @@ export const SignIn = () => {
 	const history = useHistory();
 	const expectedData = ["username", "password"];
 	const [data, setData] = useState({});
+	const [captcha, setCAPTCHA] = useState({});
+	const CAPTCHA = "6LdFclgdAAAAAH98oVLpYwhDza9LMtj4AueQj0jw";
 	
 
 	const handleChange = (e) => {
@@ -30,7 +32,12 @@ export const SignIn = () => {
 			}
 		}
 	};
+	function onCaptchaChange(value){
+		setCAPTCHA(value)
 
+	}
+
+	
 	return (
 		<div className="container form-container">
 			<div className="content">
@@ -54,9 +61,10 @@ export const SignIn = () => {
 							Sign in
 						</button>
 					</div>
+					<ReCAPTCHA sitekey={captcha} onChange={onCaptchaChange} />
 				</form>
 			</div>
-	
+			
 		</div>
 	);
 };

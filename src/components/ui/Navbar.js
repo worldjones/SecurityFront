@@ -44,9 +44,9 @@ export const Navbar = () => {
 		<nav className="navbar">
 			<div className="container">
 				<NavLink to="/" className="navbar-brand">
-					Start Code
+					Security 2021
 				</NavLink>
-				<span className="navbar-text text-monospace">v2.0</span>
+				<span className="navbar-text text-monospace">v 1.0</span>
 
 				<ul className="ml-auto navbar-nav">{loginArea}</ul>
 			</div>
