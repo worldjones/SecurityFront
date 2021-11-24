@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../providers/ProvideAuth";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export const SignIn = () => {
 	const auth = useAuth();
 	const history = useHistory();
 	const expectedData = ["username", "password"];
 	const [data, setData] = useState({});
+	
 
 	const handleChange = (e) => {
 		const target = e.target;
@@ -36,7 +38,7 @@ export const SignIn = () => {
 				<form onChange={handleChange} onSubmit={handleSubmit}>
 					<div className="form-group">
 						<label htmlFor="username" className="required">
-							Username
+							email
 						</label>
 						<input className="form-control" type="text" required name="username" id="username" />
 					</div>
@@ -54,6 +56,7 @@ export const SignIn = () => {
 					</div>
 				</form>
 			</div>
+	
 		</div>
 	);
 };
@@ -92,7 +95,10 @@ export const SignUp = () => {
 			else refPasswordConfirm.current.setCustomValidity("");
 		};
 		setMatchedPasswordValidate();
+		
 	}, [data]);
+
+
 
 	return (
 		<div className="container form-container">
@@ -101,10 +107,11 @@ export const SignUp = () => {
 				<form onChange={handleChange} onSubmit={handleSubmit}>
 					<div className="form-group">
 						<label htmlFor="username" className="required">
-							Username
+							email
 						</label>
 						<input className="form-control" type="text" required name="username" id="username" />
 					</div>
+
 					<div className="form-group">
 						<div className="form-row row-eq-spacing-sm">
 							<div className="col-sm">
@@ -120,7 +127,7 @@ export const SignUp = () => {
 								<input className="form-control" ref={refPasswordConfirm} type="password" required name="passwordConfirm" id="passwordConfirm" />
 							</div>
 						</div>
-						<p className="form-text">We recommend using 8 or more characters with a mix of letters, numbers & symbols</p>
+						<p className="form-text">Pick a password with 10 charecters or more</p>
 					</div>
 
 					<div className="form-group d-flex align-items-center">
