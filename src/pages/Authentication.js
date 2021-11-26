@@ -8,17 +8,20 @@ export const SignIn = () => {
 	const auth = useAuth();
 	const history = useHistory();
 	const expectedData = ["username", "password"];
-	const [data, setData] = useState({});
+	const [data, setData] = useState({ isverified: false});
 	const [captcha, setCAPTCHA] = useState({});
-	const CAPTCHA = "6LdFclgdAAAAAH98oVLpYwhDza9LMtj4AueQj0jw";
+	const CAPTCHA = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 	
+	//this.state = { isverified: false }
 
 	const handleChange = (e) => {
 		const target = e.target;
 		setData({ ...data, [target.name]: target.value });
+		
 	};
-
+	
 	const handleSubmit = async (e) => {
+		
 		e.preventDefault();
 
 		if (expectedData.every((key) => data.hasOwnProperty(key) && data[key])) {
@@ -34,6 +37,7 @@ export const SignIn = () => {
 	};
 	function onCaptchaChange(value){
 		setCAPTCHA(value)
+		this.setState({isverified: true})
 
 	}
 
@@ -55,13 +59,20 @@ export const SignIn = () => {
 						</label>
 						<input className="form-control" type="password" required name="password" id="password" />
 					</div>
+					
 					<div className="form-group d-flex align-items-center">
 						<Link to="/sign-up">Create account</Link>
-						<button type="submit" className="btn btn-primary ml-auto">
+
+						
+						<button  type="submit" className="btn btn-primary ml-auto" >
 							Sign in
 						</button>
 					</div>
-					<ReCAPTCHA sitekey={captcha} onChange={onCaptchaChange} />
+					
+ 						 <ReCAPTCHA
+  						  sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+  						  onChange={onCaptchaChange}
+ 						 />
 				</form>
 			</div>
 			

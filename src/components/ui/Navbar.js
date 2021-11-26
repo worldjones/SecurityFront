@@ -5,6 +5,9 @@ import { displayOrUsername } from "../../utils/user";
 export const Navbar = () => {
 	const auth = useAuth();
 	const user = auth.user;
+	
+	
+	
 
 	const loginArea = !user ? (
 		<li className="nav-item d-flex align-items-center">
