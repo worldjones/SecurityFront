@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../providers/ProvideAuth";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Component } from "react";
 
 export const SignIn = () => {
 	const auth = useAuth();
@@ -10,7 +11,7 @@ export const SignIn = () => {
 	const expectedData = ["username", "password"];
 	const [data, setData] = useState({ isverified: false});
 	const [captcha, setCAPTCHA] = useState({});
-	const CAPTCHA = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+	
 	
 	//this.state = { isverified: false }
 
@@ -64,13 +65,13 @@ export const SignIn = () => {
 						<Link to="/sign-up">Create account</Link>
 
 						
-						<button  type="submit" className="btn btn-primary ml-auto" >
+						<button type="submit" className="btn btn-primary ml-auto"  >
 							Sign in
 						</button>
 					</div>
 					
  						 <ReCAPTCHA
-  						  sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+  						  sitekey="6LdG51YdAAAAAE4gVJmqYV7i60-mrctjvlGRYeO-"
   						  onChange={onCaptchaChange}
  						 />
 				</form>
