@@ -1,5 +1,6 @@
 import { AdminDashboard } from "../pages/admin/AdminDashboard";
 import { SignIn, SignUp } from "../pages/Authentication";
+import { Fileupload } from "../pages/user/Fileupload"
 import { Settings } from "../pages/user/Settings";
 import { Welcome } from "../pages/Welcome";
 
@@ -32,6 +33,13 @@ export const routes = [
 		protected: true,
 		component: Settings,
 	},
+
+	{
+		path: "/user/fileupload",
+		protected: true,
+		component: Fileupload,
+	},
+
 	/**
 	 *
 	 * Admin routes.

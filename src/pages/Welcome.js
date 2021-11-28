@@ -4,7 +4,7 @@ export const Welcome = () => {
 		<div className="container">
 			<div className="content">
 				<h1>Hello  </h1>
-				<p>This is you profile page</p>
+				<p>This is your profile page</p>
 
 			</div>
 			
