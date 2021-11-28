@@ -5,10 +5,11 @@ import { Navbar } from "./components/ui/Navbar";
 import { NotFound } from "./pages/errors/NotFound";
 import { useAuth } from "./providers/ProvideAuth";
 import { routes } from "./routes/routes";
+import React, {useState} from 'react';
 
 const App = () => {
 	const auth = useAuth();
-
+	
 	if (auth.loading) return "Loading...";
 
 	return (
@@ -27,6 +28,8 @@ const App = () => {
 			</div>
 		</BrowserRouter>
 	);
+	
+	
 };
 
 export default App;

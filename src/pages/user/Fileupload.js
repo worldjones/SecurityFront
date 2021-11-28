@@ -1,28 +1,50 @@
+import React, { useState } from 'react'
+
 export const Fileupload = () => {
+
+    const [image, setImage] = useState('')
+    const [loading, setLoading] = useState(false)
+
+    const uploadImage = async e => {
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file', files[0])
+        data.append('upload_preset', 'worldjones' )
+        setLoading(true)
+        const res = await fetch(
+            'https://api.cloudinary.com/v1_1/duahw59pn/image/upload',
+            {
+                method: 'POST',
+                body: data
+
+            }
+        )
+        const file = await res.json()
+
+        setImage(file.secure_url)
+        setLoading(false)
+    }
+
     return (
-        <div className="container">
-            <div className="content">
-                <h1>File page</h1>
-                <p>This page contains all fileuploads</p>
-                <h1>Upload a picture!</h1>
+
+        <div className="Fileupload">
+            <h1>Upload Image</h1>
+            <input
+                type="file"
+                name="file"
+                placeholder="Upload an image"
+                onChange={uploadImage}
 
 
+            />
+            {loading ? (
+                <h3>Loading...</h3>
+            ): (
+                <img src={image} style={{width: '300px'}} />
+            )} 
 
-
-
-                <input type="file"
-                    id="avatar" name="avatar"
-                    accept="image/png, image/jpeg"></input>
-
-                    <h1></h1>
-
-                <div>
-                    <button>Submit</button>
-                </div>
-            </div>
         </div>
-
-    );
-
+    )
 
 };
+
