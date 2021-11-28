@@ -32,6 +32,7 @@ export const Fileupload = () => {
             <input
                 type="file"
                 name="file"
+                accept="image/png, image/jpeg"
                 placeholder="Upload an image"
                 onChange={uploadImage}
 
