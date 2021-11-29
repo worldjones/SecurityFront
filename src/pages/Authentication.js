@@ -10,7 +10,7 @@ export const SignIn = () => {
 	const history = useHistory();
 	const expectedData = ["username", "password"];
 	const [data, setData] = useState({ isverified: false});
-	const [captcha, setCAPTCHA] = useState({});
+	const [captcha, setCAPTCHA] = useState(false);
 	
 	
 	//this.state = { isverified: false }
@@ -24,6 +24,11 @@ export const SignIn = () => {
 	const handleSubmit = async (e) => {
 		
 		e.preventDefault();
+		
+		if (!captcha) {
+            alert("CAPTCHA NOT FILLED")
+            return;
+          }
 
 		if (expectedData.every((key) => data.hasOwnProperty(key) && data[key])) {
 			try {
@@ -36,10 +41,10 @@ export const SignIn = () => {
 			}
 		}
 	};
-	function onCaptchaChange(value){
-		setCAPTCHA(value)
-		this.setState({isverified: true})
 
+	function onCaptchaChange(value){
+		setCAPTCHA(true)
+		
 	}
 
 	
@@ -65,7 +70,7 @@ export const SignIn = () => {
 						<Link to="/sign-up">Create account</Link>
 
 						
-						<button type="submit" className="btn btn-primary ml-auto"  >
+						<button disbled={!captcha} type="submit" className="btn btn-primary ml-auto"  >
 							Sign in
 						</button>
 					</div>
